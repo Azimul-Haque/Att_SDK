@@ -20,10 +20,9 @@
        header("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-       // $post_data = file_get_contents("php://input", true);
-       $post_data = $_POST;
-       $data = var_export($_POST, true);
-       // $data = $post_data;
+       $post_data = file_get_contents("php://input", true);
+       $data2 = array();
+       $data = json_decode(parse_str($data, $post_data));
        $outp = 0;
        
        $conn = new mysqli("localhost", "killabd_user", "Mannan.KillaBD.123", "killabd_db");
