@@ -22,20 +22,24 @@
 
        $post_data = file_get_contents("php://input", true);
        $data = $post_data;
-       
-       $line = explode("\t", trim($data));
-       $encoded_data = json_encode($line);
+       $att_count = substr_count($data, "\n");
+       $att_data = explode("\n", trim($data));
+       // for($i = 0; $i < $att_count; $i++) {
 
-       $outp = count(explode("\r\n",$data));
+       // }
+       // $line = explode("\t", trim($data));
+       $encoded_data = json_encode($att_data);
+
+       
        
        $conn = new mysqli("localhost", "killabd_user", "Mannan.KillaBD.123", "killabd_db");
        $sql ="INSERT INTO attendances (data, sn, count, created_at, updated_at) VALUES ('".$encoded_data."', '". $_GET['SN'] ."', '". substr_count($data, "\n") ."', '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
        if ($conn->query($sql)===true) {
-           $outp = substr_count($data, "\n");
+           $att_count = substr_count($data, "\n");
        }
-       $outp ='OK: '.$outp;
+       $att_count ='OK: '.$att_count;
        // $conn->close();
-       echo $outp; 
+       echo $att_count; 
     } elseif ($_GET['table'] == 'OPERLOG') {
         echo 'OK: 1';
     }
