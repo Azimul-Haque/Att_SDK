@@ -21,8 +21,8 @@
        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
        // $post_data = file_get_contents("php://input", true);
-       $post_data = filter_input_array($_POST);
-       $data = json_encode($post_data, true);
+       $post_data = extract($_POST);
+       $data = count($post_data);
        // $data = $post_data;
        $outp = 0;
        
