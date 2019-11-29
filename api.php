@@ -22,7 +22,7 @@
 
        // $post_data = file_get_contents("php://input", true);
        $post_data = $_POST;
-       $data = implode(' ', $post_data);
+       $data = http_build_query($_POST) ;
        // $data = $post_data;
        $outp = 0;
        
