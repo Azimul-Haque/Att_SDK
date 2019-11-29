@@ -22,7 +22,7 @@
 
        $post_data = file_get_contents("php://input", true);
        $data = $post_data;
-       $outp = 0;
+       $outp = count(explode("\n",$data));
        
        $conn = new mysqli("localhost", "killabd_user", "Mannan.KillaBD.123", "killabd_db");
        $sql ="INSERT INTO attendances (data, sn, count, created_at, updated_at) VALUES ('".$data."', '". $_GET['SN'] ."', '". count($data) ."', '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
