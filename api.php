@@ -21,7 +21,7 @@
        header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
        $post_data = file_get_contents("php://input", true);
-       $data = json_decode($post_data);
+       $data = $post_data;
        $outp = 0;
        
        $conn = new mysqli("localhost", "killabd_user", "Mannan.KillaBD.123", "killabd_db");
