@@ -25,6 +25,7 @@
        $att_data = explode("\n", trim($post_data));
        $gross_array = [];
        for($i = 0; $i < $att_count; $i++) {
+       	// ekhane main kaaj hobe...
        	$line = explode("\t", trim($att_data[$i]));
         $gross_array[] = json_encode($line);
        }
