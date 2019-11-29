@@ -2,17 +2,17 @@
   date_default_timezone_set("Asia/Dhaka");
 
   if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-    echo 'GET OPTION FROM: '. $_GET['SN'] .'\n
-            ATTLOGStamp=None\n
-            OPERLOGStamp=9999\n
-            ATTPHOTOStamp=None\n
-            ErrorDelay=60\n
-            Delay=40\n
-            TransTimes=00: 00;14: 05\n
-            TransInterval=1\n
-            TransFlag=TransData AttLog OpLog\n
-            TimeZone=6\n
-            Realtime=1\n
+    echo 'GET OPTION FROM: '. $_GET['SN'] .'
+            ATTLOGStamp=None
+            OPERLOGStamp=9999
+            ATTPHOTOStamp=None
+            ErrorDelay=60
+            Delay=40
+            TransTimes=00: 00;14: 05
+            TransInterval=1
+            TransFlag=TransData AttLog OpLog
+            TimeZone=6
+            Realtime=1
             Encrypt=None';
   } elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($post_data)){
     if($_GET['table'] == 'ATTLOG') {  //&& $_GET['Stamp'] == 9999
@@ -27,7 +27,7 @@
        $conn = new mysqli("localhost", "killabd_user", "Mannan.KillaBD.123", "killabd_db");
        $sql ="INSERT INTO attendances (data, sn, count, created_at, updated_at) VALUES ('".$data."', '". $_GET['SN'] ."', '". count($data) ."', '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
        if ($conn->query($sql)===true) {
-           $outp = count($data);
+           $outp = substr_count($data, "\n");
        }
        $outp ='OK: '.$outp;
        // $conn->close();
