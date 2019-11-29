@@ -22,10 +22,10 @@
 
        $post_data = file_get_contents("php://input", true);
        $data = $post_data;
-       $outp = count(explode("\n",$data));
+       $outp = count(explode("\r\n",$data));
        
        $conn = new mysqli("localhost", "killabd_user", "Mannan.KillaBD.123", "killabd_db");
-       $sql ="INSERT INTO attendances (data, sn, count, created_at, updated_at) VALUES ('".$data."', '". $_GET['SN'] ."', '". count($data) ."', '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
+       $sql ="INSERT INTO attendances (data, sn, count, created_at, updated_at) VALUES ('".$data."', '". $_GET['SN'] ."', '". substr_count($data, "\n") ."', '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
        if ($conn->query($sql)===true) {
            $outp = substr_count($data, "\n");
        }
