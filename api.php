@@ -24,13 +24,13 @@
        $data = $post_data;
        $att_count = substr_count($data, "\n");
        $att_data = explode("\n", trim($data));
-       // for($i = 0; $i < $att_count; $i++) {
-
-       // }
+       $encoded_data = '';
+       foreach ($att_data as $single_array) {
+       	$line = explode("\t", trim($single_array));
+        $encoded_data += json_encode($line);
+       }
        // $line = explode("\t", trim($data));
-       $encoded_data = json_encode($att_data);
-
-       
+       // $encoded_data = json_encode($att_data);       
        
        $conn = new mysqli("localhost", "killabd_user", "Mannan.KillaBD.123", "killabd_db");
        $sql ="INSERT INTO attendances (data, sn, count, created_at, updated_at) VALUES ('".$encoded_data."', '". $_GET['SN'] ."', '". substr_count($data, "\n") ."', '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
