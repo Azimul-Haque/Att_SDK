@@ -8,6 +8,8 @@
   // $timestampdata = date('Y-m-d H:i:s', strtotime('-2 hours', strtotime($line[1])));
   $device_pin = 1;
   $device_id = 'CJRJ194261918';
+  $timestampdata = date('Y-m-d H:i:s');
+
   $sqlcheck = "SELECT * FROM attendances WHERE device_pin='$device_pin' AND device_id='$device_id' AND DATE_FORMAT(timestampdata, '%Y-%m-%d')=CURDATE() order by timestampdata ASC";
   $checkold = $conn->query($sqlcheck);
   // check old data
@@ -18,11 +20,10 @@
       while($row = $checkold->fetch_assoc()) {
           echo "id: " . $row["id"]. " - Pin: " . $row["device_pin"]. " - Time: " . $row["timestampdata"]. " " . $row["device_id"]. "<br>";
           $datearray[$counter]['id'] = $row["id"];
-          $datearray[$counter]['timestampdata'] = $row["timestampdata"];
           $counter++;
       }
-      print_r($datearray[1]);
-      $sql = "UPDATE attendances SET lastname='Doe' WHERE id=2";
+      $oldid = $datearray[1]['id'];
+      $sql = "UPDATE attendances SET timestampdata='$timestampdata' WHERE id='$oldid'";
 
       if ($conn->query($sql) === TRUE) {
           echo "Record updated successfully";
