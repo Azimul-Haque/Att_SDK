@@ -35,7 +35,8 @@
       // check old data
       $check_device_pin = $line[0];
       $check_device_id = $_GET['SN'];
-      $sqlcheck = "SELECT * FROM attendances WHERE device_pin='$check_device_pin' AND device_id='$check_device_id' AND DATE_FORMAT(timestampdata, '%Y-%m-%d')=CURDATE() order by timestampdata ASC";
+      $today = date('Y-m-d');
+      $sqlcheck = "SELECT * FROM attendances WHERE device_pin='$check_device_pin' AND device_id='$check_device_id' AND DATE_FORMAT(timestampdata, '%Y-%m-%d')='$today' order by timestampdata ASC";
       $checkold = $conn->query($sqlcheck);
       // check old data
       if ($checkold->num_rows > 1) {
