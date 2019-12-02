@@ -18,7 +18,6 @@
     } else {
       echo 'Too clever!';
     }
-
   } elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($post_data)){
     if($_GET['table'] == 'ATTLOG') {  //&& $_GET['Stamp'] == 9999
      header("Access-Control-Allow-Origin: *");
