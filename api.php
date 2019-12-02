@@ -41,21 +41,18 @@
       if ($checkold->num_rows > 1) {
           $datearray = [];
           $counter = 0;
-
           while($row = $checkold->fetch_assoc()) {
-              echo "id: " . $row["id"]. " - Pin: " . $row["device_pin"]. " - Time: " . $row["timestampdata"]. " " . $row["device_id"]. "<br>";
               $datearray[$counter]['id'] = $row["id"];
               $counter++;
           }
-          $oldid = $datearray[1]['id'];
-          $sql = "UPDATE attendances SET timestampdata='$timestampdata' WHERE id='$oldid'";
-
+          $old_id = $datearray[1]['id'];
+          $sql = "UPDATE attendances SET timestampdata='$timestampdata', updated_at='".date('Y-m-d H:i:s')."' WHERE id='$old_id'";
           if ($conn->query($sql) === TRUE) {
-              echo "Record updated successfully";
+              $att_count = substr_count($post_data, "\n");
           }
       } else {
           $sql ="INSERT INTO attendances (device_pin, timestampdata, device_id, count, created_at, updated_at) VALUES ('".$line[0]."', '".$timestampdata."', '". $_GET['SN'] ."', '". substr_count($post_data, "\n") ."', '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
-          if ($conn->query($sql)===true) {
+          if ($conn->query($sql) === TRUE) {
               $att_count = substr_count($post_data, "\n");
           }
       }
