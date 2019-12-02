@@ -31,9 +31,31 @@
      for($i = 0; $i < $att_count; $i++) {
       // ekhane main kaaj hobe...
       $line = explode("\t", trim($att_data[$i]));
-      $sql ="INSERT INTO attendances (device_pin, timestampdata, device_id, count, institute_id, created_at, updated_at) VALUES ('".$line[0]."', '".$line[1]."', '". $_GET['SN'] ."', '". substr_count($post_data, "\n") ."', 0, '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
-      if ($conn->query($sql)===true) {
-          $att_count = substr_count($post_data, "\n");
+      $timestampdata = date('Y-m-d H:i:s', strtotime('-2 hours', strtotime($line[1]))); // jehetu china time deoa ache machine e
+      // check old data
+      $sqlcheck = "SELECT id, firstname, lastname FROM MyGuests";
+      $checkold = $conn->query($sqlcheck);
+      // check old data
+      if ($checkold->num_rows > 1) {
+          $datearray = [];
+          $counter = 0;
+          while($row = $checkold->fetch_assoc()) {
+              echo "id: " . $row["id"]. " - Pin: " . $row["device_pin"]. " - Time: " . $row["timestampdata"]. " " . $row["device_id"]. "<br>";
+              $datearray[$counter]['id'] = $row["id"];
+              $datearray[$counter]['timestampdata'] = $row["timestampdata"];
+              $counter++;
+          }
+          print_r($datearray[1]);
+          $sql = "UPDATE attendances SET lastname='Doe' WHERE id=2";
+
+          if ($conn->query($sql) === TRUE) {
+              echo "Record updated successfully";
+          }
+      } else {
+          $sql ="INSERT INTO attendances (device_pin, timestampdata, device_id, count, created_at, updated_at) VALUES ('".$line[0]."', '".$timestampdata."', '". $_GET['SN'] ."', '". substr_count($post_data, "\n") ."', '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
+          if ($conn->query($sql)===true) {
+              $att_count = substr_count($post_data, "\n");
+          }
       }
      }  
      
