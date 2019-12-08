@@ -30,7 +30,7 @@
      $gross_array = [];
      
      // db connection
-     $conn = new mysqli("localhost", "killabd_innovaatt", "innovaatt.123", "killabd_innovaatt");
+     $conn = new mysqli("localhost", "innoatt_user", "Mannan.Rifat.123", "innoatt_db");
 
      for($i = 0; $i < $att_count; $i++) {
       // ekhane main kaaj hobe...
