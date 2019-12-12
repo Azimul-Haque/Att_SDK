@@ -8,7 +8,7 @@
             OPERLOGStamp=9999
             ATTPHOTOStamp=None
             ErrorDelay=300
-            Delay=60
+            Delay=300
             TransTimes=00: 00;14: 05
             TransInterval=1
             TransFlag=TransData AttLog OpLog
