@@ -19,7 +19,7 @@
       echo 'Too clever!';
     }
   } elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($post_data)){
-    if($_GET['table'] == 'ATTLOG') {  //&& $_GET['Stamp'] == 9999
+    if(!empty($_GET['table']) && $_GET['table'] == 'ATTLOG') {  //&& $_GET['Stamp'] == 9999
      header("Access-Control-Allow-Origin: *");
      header("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
      header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -67,7 +67,7 @@
      $conn->close();
      $att_count = 0;
      echo $message;
-  } elseif ($_GET['table'] == 'OPERLOG') {
+  } elseif(!empty($_GET['table']) && $_GET['table'] == 'OPERLOG') {
       echo 'OK: 1';
   }
 }
