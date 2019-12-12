@@ -10,7 +10,7 @@
             ErrorDelay=300
             Delay=300
             TransTimes=00: 00;14: 05
-            TransInterval=1
+            TransInterval=10
             TransFlag=TransData AttLog OpLog
             TimeZone=6
             Realtime=1
