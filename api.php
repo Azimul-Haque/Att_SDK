@@ -4,17 +4,17 @@
   if ($_SERVER['REQUEST_METHOD'] == 'GET'){
     if(!empty($_GET['SN'])) {
       echo 'GET OPTION FROM: '. $_GET['SN'] .'
-              ATTLOGStamp=None
-              OPERLOGStamp=9999
-              ATTPHOTOStamp=None
-              ErrorDelay=60
-              Delay=45
-              TransTimes=00: 00;14: 05
-              TransInterval=1
-              TransFlag=TransData AttLog OpLog
-              TimeZone=6
-              Realtime=1
-              Encrypt=None';
+            ATTLOGStamp=None
+            OPERLOGStamp=9999
+            ATTPHOTOStamp=None
+            ErrorDelay=300
+            Delay=60
+            TransTimes=00: 00;14: 05
+            TransInterval=1
+            TransFlag=TransData AttLog OpLog
+            TimeZone=6
+            Realtime=1
+            Encrypt=None';
     } else {
       echo 'Too clever!';
     }
