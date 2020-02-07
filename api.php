@@ -37,16 +37,16 @@
       $line = explode("\t", trim($att_data[$i]));
 
       // chech the time if it is bd time or china time
-      $machinetime = date('Y-m-d H:i:s', strtotime(strtotime($line[1])));
-      $bdtime = date('Y-m-d H:i:s');
-      $chechbdchinadiff = ($machinetime - $bdtime) / 60; // in minutes
+      $machinetime = strtotime($line[1]);
+      $bdtime = strtotime(date('Y-m-d H:i:s'));;
+      $chechbdchinadiff = ($machinetime - $bdtime); // in minutes
       if($chechbdchinadiff > 30) {
         $timestampdata = date('Y-m-d H:i:s', strtotime('-2 hours', strtotime($line[1])));
       } else {
-        $timestampdata = date('Y-m-d H:i:s', strtotime(strtotime($line[1])));
+        $timestampdata = date('Y-m-d H:i:s', strtotime($line[1]));
       }
       // chech the time if it is bd time or china time
-      
+
       // check old data
       $check_device_pin = $line[0];
       $check_device_id = $_GET['SN'];
