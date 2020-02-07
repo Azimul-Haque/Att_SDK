@@ -39,7 +39,7 @@
       // chech the time if it is bd time or china time
       $machinetime = strtotime($line[1]);
       $bdtime = strtotime(date('Y-m-d H:i:s'));;
-      $chechbdchinadiff = ($machinetime - $bdtime); // in minutes
+      $chechbdchinadiff = ($machinetime - $bdtime) / 60; // in minutes
       if($chechbdchinadiff > 30) {
         $timestampdata = date('Y-m-d H:i:s', strtotime('-2 hours', strtotime($line[1])));
       } else {
