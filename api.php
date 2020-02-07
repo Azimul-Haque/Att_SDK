@@ -35,6 +35,9 @@
      for($i = 0; $i < $att_count; $i++) {
       // ekhane main kaaj hobe...
       $line = explode("\t", trim($att_data[$i]));
+      // chech the time if it is bd time or china time
+      $checktimebdorchina = date('Y-m-d H:i:s', strtotime(strtotime($line[1])));
+      if()
       $timestampdata = date('Y-m-d H:i:s', strtotime('-2 hours', strtotime($line[1]))); // jehetu china time deoa ache machine e
       // check old data
       $check_device_pin = $line[0];
