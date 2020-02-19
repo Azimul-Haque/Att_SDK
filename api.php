@@ -8,13 +8,13 @@
             OPERLOGStamp=9999
             ATTPHOTOStamp=None
             ErrorDelay=300
-            Delay=300
             TransTimes=00: 00;14: 05
             TransInterval=10
             TransFlag=TransData AttLog OpLog
             TimeZone=6
             Realtime=1
             Encrypt=None';
+            // Delay=300
     } else {
       echo 'Too clever!';
     }
@@ -65,17 +65,21 @@
           $sql = "UPDATE attendances SET timestampdata='$timestampdata', updated_at='".date('Y-m-d H:i:s')."' WHERE id='$old_id'";
           if ($conn->query($sql) === TRUE) {
               $att_count = substr_count($post_data, "\n");
+              $conn->close();
           }
       } else {
           $sql ="INSERT INTO attendances (device_pin, timestampdata, device_id, count, created_at, updated_at) VALUES ('".$line[0]."', '".$timestampdata."', '". $_GET['SN'] ."', '". substr_count($post_data, "\n") ."', '".date('Y-m-d H:i:s')."', '".date('Y-m-d H:i:s')."')";
           if ($conn->query($sql) === TRUE) {
               $att_count = substr_count($post_data, "\n");
+              $conn->close();
           }
       }
      }  
      
      $message ='OK: '.$att_count;
      $conn->close();
+     $conn->close();
+     mysqli_close($conn);
      $att_count = 0;
      echo $message;
   } elseif(!empty($_GET['table']) && $_GET['table'] == 'OPERLOG') {
