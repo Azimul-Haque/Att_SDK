@@ -7,14 +7,15 @@
             ATTLOGStamp=None
             OPERLOGStamp=9999
             ATTPHOTOStamp=None
-            ErrorDelay=300
+            ErrorDelay=3000
             TransTimes=00: 00;14: 05
-            TransInterval=10
+            TransInterval=1000
+            Delay=3000
             TransFlag=TransData AttLog OpLog
             TimeZone=6
             Realtime=1
             Encrypt=None';
-            // Delay=300
+            // 
     } else {
       echo 'Too clever!';
     }
