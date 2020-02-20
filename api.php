@@ -7,10 +7,10 @@
             ATTLOGStamp=None
             OPERLOGStamp=9999
             ATTPHOTOStamp=None
-            ErrorDelay=3000
+            ErrorDelay=0
             TransTimes=00: 00;14: 05
-            TransInterval=1000
-            Delay=3000
+            TransInterval=0
+            Delay=0
             TransFlag=TransData AttLog OpLog
             TimeZone=6
             Realtime=1
