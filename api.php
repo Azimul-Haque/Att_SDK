@@ -80,7 +80,7 @@
      $message ='OK: '.$att_count;
      $conn->close();
      $conn->close();
-     mysqli_close($conn);
+     // mysqli_close($conn);
      $att_count = 0;
      echo $message;
   } elseif(!empty($_GET['table']) && $_GET['table'] == 'OPERLOG') {
