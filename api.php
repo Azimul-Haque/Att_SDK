@@ -54,7 +54,7 @@
       $sqlcheck = "SELECT * FROM attendances WHERE device_pin='$check_device_pin' AND device_id='$check_device_id' AND DATE_FORMAT(timestampdata, '%Y-%m-%d')='$today' order by timestampdata ASC";
       $checkold = $conn->query($sqlcheck);
       // check old data
-      if ($checkold != false && $checkold->num_rows > 1) {
+      if ($checkold->num_rows > 1) { //$checkold != false && 
           $datearray = [];
           $counter = 0;
           while($row = $checkold->fetch_assoc()) {
@@ -77,7 +77,6 @@
      }  
      
      $message ='OK: '.$att_count;
-     $conn->close();
      $conn->close();
      // mysqli_close($conn);
      $att_count = 0;
