@@ -19,7 +19,7 @@
       echo 'Too clever!';
     }
   } elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($post_data)){
-    if(!empty($_GET['table']) && $_GET['table'] == 'ATTLOG') {  //&& $_GET['Stamp'] == 9999
+    if(!empty($_GET['table']) && $_GET['table'] == 'ATTLOG') {
      header("Access-Control-Allow-Origin: *");
      header("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
      header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -38,7 +38,7 @@
 
       // chech the time if it is bd time or china time
       $machinetime = strtotime($line[1]);
-      $bdtime = strtotime(date('Y-m-d H:i:s'));;
+      $bdtime = strtotime(date('Y-m-d H:i:s'));
       $chechbdchinadiff = ($machinetime - $bdtime) / 60; // in minutes
       if($chechbdchinadiff > 30) {
         $timestampdata = date('Y-m-d H:i:s', strtotime('-2 hours', strtotime($line[1])));
