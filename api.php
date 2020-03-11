@@ -43,7 +43,7 @@
       $machinetime = strtotime($line[1]);
       $bdtime = strtotime(date('Y-m-d H:i:s'));
       $chechbdchinadiff = ($machinetime - $bdtime) / 60; // in minutes
-      if($chechbdchinadiff > 30) {
+      if($chechbdchinadiff > 60) {
         $timestampdata = date('Y-m-d H:i:s', strtotime('-2 hours', strtotime($line[1])));
       } else {
         $timestampdata = date('Y-m-d H:i:s', strtotime($line[1]));
