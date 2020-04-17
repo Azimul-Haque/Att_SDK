@@ -1,4 +1,13 @@
 <?php
+/*
+ * Attendance SDK
+ * @package attSDK
+ * @author A. H. M. Azimul Haque
+ * @copyright 2020 A. H. M. Azimul Haque
+ * @updated April 18, 2020
+ *
+ */
+
   header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
   header("Pragma: no-cache"); // HTTP 1.0.
   header("Expires: 0"); // Proxies.
