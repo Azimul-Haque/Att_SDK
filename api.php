@@ -4,7 +4,7 @@
  * @package attSDK
  * @author A. H. M. Azimul Haque
  * @copyright 2020 A. H. M. Azimul Haque
- * @updated April 21, 2020
+ * @updated May 01, 2020
  *
  */
 
